@@ -5,8 +5,6 @@ module.exports = function(models) {
 	// remove all old data
 	Translation.remove({}, function()
 	{
-		console.log("all removed");
-		console.log("create data");
 		var t1 = new Translation({ texts: [
 			{lang:'de_DE', text:"Kleme"},
 			{lang:'en_US', text:"Terminal"}

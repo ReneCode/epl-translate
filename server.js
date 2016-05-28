@@ -10,8 +10,8 @@ module.exports = function()  {
     var logging = require('./logging');
     app.use(logging);
     
-    app.use('/api/translation', require('./translation')(models));    
-    app.use('/api/translate', require('./translate')(models));    
+    app.use('/api/translation', require('./api/translation')(models));    
+    app.use('/api/translate', require('./api/translate')(models));    
 
     app.get('/', function(req, res) {
         res.send("epl-translate Service");
