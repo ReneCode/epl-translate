@@ -1,6 +1,9 @@
 FROM node
 
-MAINTAINER Reinhard Langner
+MAINTAINER ReLang
+
+ENV NODE_ENV=production
+ENV PORT=3000
 
 RUN echo "building docker container"
 
@@ -10,6 +13,6 @@ COPY . /app
 
 RUN npm install
 
-EXPOSE 3000
+EXPOSE $PORT
 
 CMD ["node", "app.js"]
