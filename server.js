@@ -1,7 +1,15 @@
 
-module.exports = function()  {
+module.exports = function(option)  {
+    if (!option) {
+        option =  {
+            createSampleData: false
+        };
+    }
     var models = require('./schema/models')();
-    require('./schema/createData')(models);
+    
+    if (option.createSampleData) {
+        require('./schema/createData')(models);
+    }
     
     var express = require('express');
     var http = require('http');

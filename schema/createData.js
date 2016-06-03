@@ -1,22 +1,31 @@
 
+
+
+function createSampleData(translation) {
+	// get sample data from json-file
+	translation.insertMany( require('./sample-translations.json'))
+	.then(function(data) {
+		console.log("created sample data:", data);
+	})
+	.catch(function(err) {
+		console.log("err", err);
+	});
+}
+
 module.exports = function(models) {
 	var Translation = models.Translation;
-	
-	// remove all old data
-	Translation.remove({}, function()
-	{
-		var t1 = new Translation({ texts: [
-			{lang:'de_DE', text:"Kleme"},
-			{lang:'en_US', text:"Terminal"}
-			
-		]});
-		t1.save();
-		var t2 = new Translation({ texts: [
-			{lang:'de_DE', text:"Verbindung"},
-			{lang:'en_US', text:"Connection"}
-			
-		]});
-		t2.save();
+		
+	Translation.find({}).exec()
+	.then(function(data) {
+		if (data.length == 0) {
+			createSampleData(Translation);			
+		}
 	})
+	.catch(function(err) {
+		console.log("error:", err);
+	});
+	
 	
 }
+
+

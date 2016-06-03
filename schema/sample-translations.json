@@ -1,0 +1,22 @@
+[
+	{ "comment": "Begrüßung",
+		"texts": [
+			{ "lang":"de_DE", "text":"Hallo" },
+			{ "lang":"en_US", "text":"hello" }
+	] },
+	
+	{ "texts": [
+		{"lang":"de_DE", "text":"Tisch"},
+		{"lang":"en_US", "text":"desk"} 
+	] },
+	
+	{ "texts": [
+		{"lang":"de_DE", "text":"Klemme"},
+		{"lang":"en_US", "text":"terminal"} 
+	] },
+	
+	{ "texts": [
+		{"lang":"de_DE", "text":"Verbindung"},
+		{"lang":"en_US", "text":"connection"} 
+	] }
+]

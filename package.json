@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "mongo": "docker run --name mymongo -p 27017:27017 -d mongo",
     "start": "node app.js",
     "test": "mocha"
   },
