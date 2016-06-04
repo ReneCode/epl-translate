@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+	div.navbar.navbar-default.navbar-fixed-top
+		div.container-fluid
+			a.navbar-brand(href="#") epl-translate
+	
+	div.container
+		div.row
+			nav
+				form#searchform
+					div.btn-group
+						btn.lang-select.btn.btn.default.dropdown-toggle(type="button" data-toggle="dropdown") Language
+							span.caret
+						ul.dropdown-menu(role="menu")
+							li
+								a(href="#") de_DE
+								a(href="#") en_US
+					input#searchinput(type="text" required="required" placeholder="Search")
+					button.btn.btn-default-btn-md#searchbutton(type="submit") Search
+				
+	script(src="javascript/main.js")

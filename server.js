@@ -5,6 +5,11 @@ module.exports = function(option)  {
             createSampleData: false
         };
     }
+    
+    var serveStatic = require('serve-static');
+    var path = require('path');
+    var routes = require('./routes/routes');
+ 
     var models = require('./schema/models')();
     
     if (option.createSampleData) {
@@ -12,18 +17,28 @@ module.exports = function(option)  {
     }
     
     var express = require('express');
-    var http = require('http');
+//    var http = require('http');
     var app = express();
-    
+
     var logging = require('./logging');
     app.use(logging);
-    
-    app.use('/api/translation', require('./api/translation')(models));    
-    app.use('/api/translate', require('./api/translate')(models));    
+  
+    app.use(serveStatic(path.join(__dirname, 'public')));
 
+    app.set('views', path.join(__dirname, 'views'));
+    app.set('view engine', 'jade'); 
+   
+    
+    routes(app, models);
+
+
+/*
     app.get('/', function(req, res) {
         res.send("epl-translate Service");
     });
+*/
+
+
     
     return app;  
     

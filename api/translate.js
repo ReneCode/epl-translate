@@ -9,8 +9,11 @@ module.exports = function(models) {
 	router.use(bodyparser.json());
 	
 	router.get('/', function(req, res) {
-		
+		var q = req.query['q'];
+		console.log(q);
+		res.send({text: q + " -  translated"});
 	});
+	
 	
 	return router;
 }
