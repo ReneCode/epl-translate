@@ -11,26 +11,13 @@ module.exports = function(models) {
 	router.get('/', function(req, res) {
 		var q = req.query['q'];
 		res.send(
-			{ result: [
-				{	texts: [
-					{ 	lang:"de_de",
-						text:q 
-					},
-					{ 	lang:"en_US",
-						text: q + " -  translated"
-					} ]},
-				{ texts: [
-					{ 	lang:"de_de",
-						text: q+q 
-					},
-					{ 	lang:"en_US",
-						text: q + q + " -  translated"
-					}
-				]}
-			] }
-		
-				
-				);
+			{ languages: [ "de_de", "en_US" ],
+			  translations: [
+				  { texts:[ q,      q+"translated" ] },
+				  { texts:[ q+q,    q+q+"translated"]}
+			  ]
+			}
+			);
 	});
 	
 	
