@@ -26,7 +26,7 @@ module.exports = function(option)  {
     app.use(serveStatic(path.join(__dirname, 'public')));
 
     app.set('views', path.join(__dirname, 'views'));
-    app.set('view engine', 'jade'); 
+    app.set('view engine', 'pug'); 
    
     
     routes(app, models);

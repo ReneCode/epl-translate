@@ -10,8 +10,27 @@ module.exports = function(models) {
 	
 	router.get('/', function(req, res) {
 		var q = req.query['q'];
-		console.log(q);
-		res.send({text: q + " -  translated"});
+		res.send(
+			{ result: [
+				{	texts: [
+					{ 	lang:"de_de",
+						text:q 
+					},
+					{ 	lang:"en_US",
+						text: q + " -  translated"
+					} ]},
+				{ texts: [
+					{ 	lang:"de_de",
+						text: q+q 
+					},
+					{ 	lang:"en_US",
+						text: q + q + " -  translated"
+					}
+				]}
+			] }
+		
+				
+				);
 	});
 	
 	
