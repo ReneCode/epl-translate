@@ -15,9 +15,12 @@ function displayTranslationResult(data) {
         var th = $('<th>').html( data.languages[i] );
         tr.append(th);
     }  
-    $('#resulttable').append(tr);
+    var thead = $("<thead>");
+    thead.append(tr);
+    $('#resulttable').append(thead);
     
     // display rows
+    var tbody = $("<tbody>");
     for (var iTrans=0; iTrans<data.translations.length; iTrans++)
     {
         var t = data.translations[iTrans];
@@ -27,16 +30,22 @@ function displayTranslationResult(data) {
             var td = $('<td>').html( t.texts[i] );
             tr.append(td);
         }  
-        $('#resulttable').append(tr);
-        
+        tbody.append(tr);
     }
+    $('#resulttable').append(tbody);
     
 }
 
 $('#searchbutton').click(function(ev){
 	ev.preventDefault();
 	var input = $('#searchinput').val();
-	var data = {q: input};
+    // translate source => target
+    var source = "de_DE";
+    var target = "en_US";
+	var data = 
+        {   text: input,
+            source: source,
+            target: target };
 	$.ajax({
 		type:"GET",
 		url:"/api/translate",

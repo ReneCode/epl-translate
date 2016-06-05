@@ -1,4 +1,9 @@
-FROM node
+#
+# docker 
+#
+#
+
+FROM node:4
 
 MAINTAINER ReLang
 

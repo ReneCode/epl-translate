@@ -9,12 +9,15 @@ module.exports = function(models) {
 	router.use(bodyparser.json());
 	
 	router.get('/', function(req, res) {
-		var q = req.query['q'];
+		var text = req.query['text'];
+		var source = req.query['source'];
+		var target = req.query['target'];
+		
 		res.send(
 			{ languages: [ "de_de", "en_US" ],
 			  translations: [
-				  { texts:[ q,      q+"translated" ] },
-				  { texts:[ q+q,    q+q+"translated"]}
+				  { texts:[ text + source, 	text + target ] },
+				  { texts:[ text + text,    text + text + "translated"]}
 			  ]
 			}
 			);
