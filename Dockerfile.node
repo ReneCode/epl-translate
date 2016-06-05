@@ -1,7 +1,13 @@
 #
-# docker 
+# Docker
+#  build:
+#   docker build -t epltranslate -f Dockerfile.node .
 #
 #
+#  run:
+#   docker run -p 3000:3000 epltranslate
+#
+
 
 FROM node:4
 
