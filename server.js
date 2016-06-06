@@ -40,7 +40,25 @@ module.exports = function(option)  {
 
 
     
-    return app;  
+    var http = require('http');
+    var port = process.env.PORT || 3000;
+    var server = http.createServer(app);
+
+    var mongoose = require('mongoose');
+    
+    mongoose.connection.on('disconnect', function() {
+        console.log("mongoose disconnected");
+    })
+    
+
+    server.on('close', function() {
+       mongoose.connection.close();
+    });
+
+
+
+   
+    return server;  
     
 };
 

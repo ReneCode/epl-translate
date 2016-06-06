@@ -12,7 +12,27 @@ module.exports = function(models) {
 		var text = req.query['text'];
 		var source = req.query['source'];
 		var target = req.query['target'];
+//		console.log(text, source, target);
+		Translation.find({texts: {$elemMatch: {lang:source, text:text}}}).exec(function(err, data) {
+			if (err) {
+				res.status(500).send("query error");
+			}
+			else {
+				var resultTexts = [];
+				data.forEach( function(d) {
+					var oneResult = {texts:[]};
+					d.texts.forEach(function(txt) {
+						if (txt.lang === target) {
+							oneResult.texts.push( { lang: txt.lang, text:txt.text} );
+						}
+					});
+					resultTexts.push(oneResult);
+				});
+				res.json(resultTexts);
+			}
+		});
 		
+		/*
 		res.send(
 			{ languages: [ "de_de", "en_US" ],
 			  translations: [
@@ -21,6 +41,7 @@ module.exports = function(models) {
 			  ]
 			}
 			);
+			*/
 	});
 	
 	

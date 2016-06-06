@@ -3,18 +3,22 @@ var assert = require('assert');
 var app = require('../server');
 var superagent = require('superagent');
 
-var URL_ROOT = 'http://localhost:3010';
+var PORT = 3010;
+var URL_ROOT = 'http://localhost:' + PORT;
 
 describe('REST translation', function(){
 	var server;
 	
 	before(function(done) {
-		server = app().listen(3010);
-		done();
+		server = app().listen(PORT, function() {
+			done();
+		});
 	});
 	
-	after(function() {
-		server.close();
+	after(function(done) {
+		server.close(function() {
+            done();
+        });
 	});
 	
 	it('can be called', function(done) {

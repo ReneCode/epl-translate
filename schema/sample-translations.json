@@ -11,6 +11,12 @@
 	] },
 	
 	{ "texts": [
+		{"lang":"de_DE", "text":"Tisch"},
+		{"lang":"en_US", "text":"table"}, 
+		{"lang":"fr_FR", "text":"table"} 
+	] },
+	
+	{ "texts": [
 		{"lang":"de_DE", "text":"Klemme"},
 		{"lang":"en_US", "text":"terminal"} 
 	] },
