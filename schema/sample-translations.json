@@ -1,28 +1,33 @@
 [
 	{ "comment": "Begrüßung",
-		"texts": [
-			{ "lang":"de_DE", "text":"Hallo" },
-			{ "lang":"en_US", "text":"hello" }
-	] },
+		"texts": {
+			"de_DE": "Hallo",
+			"en_US": "hello" 
+		}
+	},
 	
-	{ "texts": [
-		{"lang":"de_DE", "text":"Tisch"},
-		{"lang":"en_US", "text":"desk"} 
-	] },
+	{ "texts": {
+		"de_DE":"Tisch",
+		"en_US":"desk"
+		} 
+	},
 	
-	{ "texts": [
-		{"lang":"de_DE", "text":"Tisch"},
-		{"lang":"en_US", "text":"table"}, 
-		{"lang":"fr_FR", "text":"table"} 
-	] },
+	{ "texts": { 
+		"de_DE":"Tisch",
+		"en_US":"table", 
+		"fr_FR":"table"
+		} 
+	},
 	
-	{ "texts": [
-		{"lang":"de_DE", "text":"Klemme"},
-		{"lang":"en_US", "text":"terminal"} 
-	] },
+	{ "texts": {
+		"de_DE":"Klemme",
+		"en_US":"terminal"
+		}
+	},
 	
-	{ "texts": [
-		{"lang":"de_DE", "text":"Verbindung"},
-		{"lang":"en_US", "text":"connection"} 
-	] }
+	{ "texts": {
+		"de_DE": "Verbindung",
+		"en_US": "connection"
+		} 
+	}
 ]
