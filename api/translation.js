@@ -1,6 +1,7 @@
 
-// routing of /api/translation
+var ObjectId = require('mongoose').Types.ObjectId;
 
+// routing of /api/translation
 
 function getIntValue(req, name, defaultVal) {
 	var val = parseInt(req.query[name]);
@@ -75,9 +76,9 @@ module.exports = function(models) {
 	});
 	
 	router.get('/:id', function(req, res) {
-		Translation.findOne({_id:req.params.id}).exec(function(err, data) {
+		Translation.findOne({_id:req.params.id}, function(err, data) {
 			res.json(data);
-		})
+		});
 	});
 	
 	router.post('/', function(req, res) {

@@ -4,7 +4,7 @@ var app = require('../server');
 var superagent = require('superagent');
 
 var PORT = 3010;
-var URL_ROOT = 'http://localhost:' + PORT + '/api/translation';
+var URL_ROOT = 'http://localhost:' + PORT + '/api/translation/';
 
 describe('REST translation', function(){
 	var server;
@@ -31,8 +31,32 @@ describe('REST translation', function(){
 		});
 	});
 
+
+	describe('GET', function() {
+		var sampleData;
+
+		it ('all', function(done) {
+			superagent.get(URL_ROOT)
+			.end(function(err, res) {
+				assert.ifError(err);
+				assert(res.body.length > 0);
+				sampleData = res.body;
+				done(); 
+			});
+		});
+
+		it ('get "hallo"', function(done) {
+			superagent.get(URL_ROOT + sampleData[0]._id)
+			.end(function(err, res) {
+				assert.equal(res.body._id, sampleData[0]._id);
+				assert.equal(res.body.de_DE, sampleData[0].de_DE);
+				done();
+			})
+		})
+	});
+
 	describe('POST', function() {
-		it ('post translation with invalid data', function(done) {
+		it ('with invalid data', function(done) {
 			superagent.post(URL_ROOT)
 			.send({x:42})
 			.end(function(err, res) {
@@ -42,7 +66,7 @@ describe('REST translation', function(){
 			})
 		});
 
-		it ('can post translation', function(done) {
+		it ('with valid data', function(done) {
 			var mlString = {
 				text: {
 					de_DE: "hallo",
@@ -58,11 +82,12 @@ describe('REST translation', function(){
 				assert.ifError(err);
 				assert.deepEqual(res.body.text, mlString.text);
 				assert.deepEqual(res.body.comment, mlString.comment);
+
 				done();
 			})
 		});
 
-		it ('remove bad languages post translation', function(done) {
+		it ('remove bad languages', function(done) {
 			var mlString = {
 				text: {
 					de_DE: "hallo",

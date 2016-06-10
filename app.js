@@ -3,7 +3,7 @@ var app = require('./server');
 //var http = require('http');
 
 var option = {
-	createSampleData: true
+	createSampleData: false
 };
 
 /*
