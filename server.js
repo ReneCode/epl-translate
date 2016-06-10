@@ -2,7 +2,8 @@
 module.exports = function(option)  {
     if (!option) {
         option =  {
-            createSampleData: false
+            createSampleData: false,
+            logging: true
         };
     }
     
@@ -17,48 +18,34 @@ module.exports = function(option)  {
     }
     
     var express = require('express');
-//    var http = require('http');
     var app = express();
 
-    var logging = require('./logging');
-    app.use(logging);
+    if (option.logging) {
+        var logging = require('./logging');
+        app.use(logging);
+    }
   
     app.use(serveStatic(path.join(__dirname, 'public')));
 
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'pug'); 
-   
     
     routes(app, models);
 
-
-/*
-    app.get('/', function(req, res) {
-        res.send("epl-translate Service");
-    });
-*/
-
-
-    
     var http = require('http');
     var port = process.env.PORT || 3000;
     var server = http.createServer(app);
 
     var mongoose = require('mongoose');
     
-    mongoose.connection.on('disconnect', function() {
-        console.log("mongoose disconnected");
-    })
-    
-
     server.on('close', function() {
-       mongoose.connection.close();
+        // remove the registrated models, because otherwise on testing
+        // multiple files, the second file will cause an error
+        // on registration a model and it is allready registed
+        mongoose.models = [];
+        mongoose.connection.close();
     });
-
-
-
    
     return server;  
-    
 };
 

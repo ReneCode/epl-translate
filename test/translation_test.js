@@ -10,7 +10,7 @@ describe('REST translation', function(){
 	var server;
 	
 	before(function(done) {
-		server = app().listen(PORT, function() {
+		server = app({logging:false}).listen(PORT, function() {
 			done();
 		});
 	});

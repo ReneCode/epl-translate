@@ -1,5 +1,7 @@
 var assert = require('assert');
 
+var mongoose = require('mongoose');
+
 var app = require('../server');
 var superagent = require('superagent');
 
@@ -10,7 +12,7 @@ describe('REST translate', function(){
 	var server;
 	
 	before(function(done) {
-		server = app().listen(PORT, function() {
+		server = app({logging:false}).listen(PORT, function() {
 			done();
 		});
 	});
@@ -20,7 +22,7 @@ describe('REST translate', function(){
             done();
         });
 	});
-	
+
     describe('general', function() {
         it('can be called', function(done) {
             superagent.get(URL_TRANSLATE, function(err, res) {
@@ -37,7 +39,6 @@ describe('REST translate', function(){
             .query(para)
             .end( function(err, res) {
                 assert.ifError(err);
-                console.log(res.body);
                 assert.equal(res.body.length, 1);
                 assert.equal(res.body[0].texts[0].lang, "en_US");
                 assert.equal(res.body[0].texts[0].text, "terminal");

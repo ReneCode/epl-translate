@@ -15,7 +15,6 @@ module.exports = function() {
   		});
 	});
 	
-	
 	var translation = mongoose.model('Translation', require('./translation')(), 'translation');
 	
 	var models = {
