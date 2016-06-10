@@ -30,8 +30,8 @@ describe('REST translate', function(){
         });
     });
     
-    describe('translate word', function() {
-        it ('can translate 1:1', function(done) {
+    describe('translate text', function() {
+        it ('1:1', function(done) {
             var para = { source: "de_DE", target:"en_US", text:"Klemme"};
             superagent.get(URL_TRANSLATE)
             .query(para)
@@ -39,11 +39,38 @@ describe('REST translate', function(){
                 assert.ifError(err);
                 assert.equal(res.body.length, 1);
                 var trans = res.body[0];
-                assert.equal(trans.text.en_US, "terminal");
+                assert.equal(trans.en_US, "terminal");
                 done();
                 
             });
-        }) 
+        });
+
+        it ('1:N', function(done) {
+            var para = { source: "de_DE", target:"en_US", text:"Tisch"};
+            superagent.get(URL_TRANSLATE)
+            .query(para)
+            .end( function(err, res) {
+                assert.ifError(err);
+                assert.equal(res.body.length, 2);
+                var trans = res.body;
+                assert.equal(trans[0].en_US, "desk");
+                assert.equal(trans[1].en_US, "table");
+                done();
+                
+            });
+        });
+
+        it ('1:nothing', function(done) {
+            var para = { source: "de_DE", target:"en_US", text:"dummy"};
+            superagent.get(URL_TRANSLATE)
+            .query(para)
+            .end( function(err, res) {
+                assert.ifError(err);
+                assert.equal(res.body.length, 0);
+                done();
+                
+            });
+        });
     });
 });
 

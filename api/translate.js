@@ -12,24 +12,27 @@ module.exports = function(models) {
 		var text = req.query['text'];
 		var source = req.query['source'];
 		var target = req.query['target'];
-		console.log("X:", text, source, target);
-		Translation.find({texts: {$elemMatch: {lang:source, text:text}}}).exec(function(err, data) {
+		// find in nested object text 
+		//  { text.de_DE: "searchText" }
+		var filter = {};
+		filter[ 'text.' + source] = text;
+		Translation.find(filter).exec(function(err, data) {
+//		Translation.find({texts: {$elemMatch: {lang:source, text:text}}}).exec(function(err, data) {
 			if (err) {
 				res.status(500).send("query error");
 			}
 			else {
 				var resultTexts = [];
-				console.log(data);
-				/*
 				data.forEach( function(d) {
-					var oneResult = {texts:[]};
-					d.texts.forEach(function(txt) {
-						if (txt.lang === target) {
-							oneResult.texts.push( { lang: txt.lang, text:txt.text} );
+//					console.log("X:", d);
+					var oneResult = {};
+					for (var prop in d.text) {
+						if (prop === target) {
+							oneResult[prop] = d.text[prop];
 						}
-					});
+					}
 					resultTexts.push(oneResult);
-				}); */ 
+				});  
 				res.json(resultTexts);
 			}
 		});

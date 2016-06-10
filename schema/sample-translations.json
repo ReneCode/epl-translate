@@ -1,31 +1,31 @@
 [
 	{ "comment": "Begrüßung",
-		"texts": {
+		"text": {
 			"de_DE": "Hallo",
 			"en_US": "hello" 
 		}
 	},
 	
-	{ "texts": {
+	{ "text": {
 		"de_DE":"Tisch",
 		"en_US":"desk"
 		} 
 	},
 	
-	{ "texts": { 
+	{ "text": { 
 		"de_DE":"Tisch",
 		"en_US":"table", 
 		"fr_FR":"table"
 		} 
 	},
 	
-	{ "texts": {
+	{ "text": {
 		"de_DE":"Klemme",
 		"en_US":"terminal"
 		}
 	},
 	
-	{ "texts": {
+	{ "text": {
 		"de_DE": "Verbindung",
 		"en_US": "connection"
 		} 
