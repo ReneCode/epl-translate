@@ -39,7 +39,8 @@ $('#searchbutton').click(function(ev){
 	ev.preventDefault();
 	var input = $('#searchinput').val();
     // translate source => target
-    var source = "de_DE";
+    
+    var source = $('.lang-select').text();
     var target = ["en_US", "fr_FR"];
 	var data = 
         {   q: input,
@@ -57,5 +58,13 @@ $('#searchbutton').click(function(ev){
             alert("error");
         }	
 	})
+});
+
+// ----------
+
+// set the selected item from the dropdown list as button text
+$(".dropdown-menu li a").click(function(){
+  var selText = $(this).text();
+  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+'<span class="caret"></span>');
 });
 
