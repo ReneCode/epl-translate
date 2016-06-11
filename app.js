@@ -3,7 +3,9 @@ var app = require('./server');
 //var http = require('http');
 
 var option = {
-	createSampleData: false
+	createSampleData: false,
+	logging: true,
+	production: true
 };
 
 /*

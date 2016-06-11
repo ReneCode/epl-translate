@@ -29,5 +29,44 @@
 		"de_DE": "Verbindung",
 		"en_US": "connection"
 		} 
+	},
+
+	{ "text": 
+		{ "de_DE": "Anschluss Steuerhilfsluft 12/14",
+			"en_US": "Auxiliary pilot air port 12/14",
+			"es_ES": "Conexión del aire de pilotaje auxiliar 12/14",
+			"fr_FR": "Raccord de pilotage auxiliaire 12/14",
+			"hu_HU": "12/14 vezérlő segédlevegő csatlakozás",
+			"it_IT": "Attacco servopilotaggio 12/14",
+			"ja_JP": "外部パイロット接続ポート12/14",
+			"ko_KR": "보조 파일로트 공압 포트 12/14",
+			"pl_PL": "Przyłącze zasilania pilota 12/14",
+			"pt_BR": "Conexão de ar auxiliar de servopilotagem 12/14",
+			"pt_PT": "Conexão de ar auxiliar de servopilotagem 12/14",
+			"ru_RU": "Подвод пилотного воздуха 12/14",
+			"sk_SK": "Prípojka pomocného riadiaceho vzduchu 12/14",
+			"tr_TR": "Yardımcı pilot hava bağlantısı 12/14",
+			"zh_CN": "先导气口12/14" 
+			} 
+	},
+
+	{ "text": 
+	{ "cs_CZ": "EN 81346-2 / 2010-05 (Značení elektrických provozních prostředků)",
+		"da_DK": "EN 81346-2 / 2010-05 (driftsmiddeldata elektrisk)",
+		"de_DE": "EN 81346-2 / 2010-05 (Betriebsmittelkennzeichen Elektrik)",
+		"en_US": "EN 81346-2 / 2010-05 (equipment designation electrics)",
+		"es_ES": "EN 81346-2 / 2010-05 (Símbolo de equipo eléctrico)",
+		"fr_FR": "EN 81346-2 / 2010-05 (Identification des équipements électrotechniques)",
+		"hu_HU": "EN 81346-2 / 2010-05 (Készülékazonosítók, villamosság)",
+		"it_IT": "EN 81346-2 / 2010-05 (classificazione degli oggetti e classi di codifica)",
+		"nl_NL": "EN 81346-2 / 2010-05 (merkteken faciliteit Elektrisch)",
+		"pl_PL": "EN 81346-2 / 2010-05 (Oznaczenie sprzętu elektrycznego)",
+		"pt_BR": "EN 81346-2 / 2010-05 (identificador de equipamento elétrico)",
+		"pt_PT": "EN 81346-2 / 2010-05 (identificador de equipamento elétrico)",
+		"ru_RU": "EN 81346-2 / 2010-05 (обозначение оборудования: электротехника)",
+		"sv_SE": "EN 81346-2 / 2010-05 (utrustningsmärkning elkomponenter)",
+		"tr_TR": "EN 81346-2 / 2010-05 (Referans kodu elektrik)",
+		"zh_CN": "EN 81346-2 / 2010-05 （驱动介质标识，电气）" 
+		} 
 	}
 ]

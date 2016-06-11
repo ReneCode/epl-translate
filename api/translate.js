@@ -12,6 +12,11 @@ module.exports = function(models) {
 		var text = req.query['text'];
 		var source = req.query['source'];
 		var target = req.query['target'];
+		if (!Array.isArray(target)) {
+			target = [ target ];
+		}
+		// TODO check valid target 
+
 		// find in nested object text 
 		//  { text.de_DE: "searchText" }
 		var filter = {};
@@ -24,12 +29,10 @@ module.exports = function(models) {
 			else {
 				var resultTexts = [];
 				data.forEach( function(d) {
-//					console.log("X:", d);
 					var oneResult = {};
-					for (var prop in d.text) {
-						if (prop === target) {
-							oneResult[prop] = d.text[prop];
-						}
+					for (var i =0; i<target.length; i++) {
+						var language = target[i]
+						oneResult[language] = d.text[language];
 					}
 					resultTexts.push(oneResult);
 				});  

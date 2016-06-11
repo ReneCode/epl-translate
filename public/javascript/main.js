@@ -5,29 +5,28 @@ function displayTranslationResult(data) {
     // remove old table content
     $('#resulttable').children().remove();
     
-    if (data.translations.length == 0) {
+    if (data.length == 0) {
         return;
     }
     
     // display header
     var tr = $('<tr>');
-    for (var i=0; i<data.languages.length; i++) {
-        var th = $('<th>').html( data.languages[i] );
+    for (var prop in data[0]) {
+        var th = $('<th>').html( prop );
         tr.append(th);
-    }  
+    }
     var thead = $("<thead>");
     thead.append(tr);
     $('#resulttable').append(thead);
     
     // display rows
     var tbody = $("<tbody>");
-    for (var iTrans=0; iTrans<data.translations.length; iTrans++)
+    for (var iTrans=0; iTrans<data.length; iTrans++)
     {
-        var t = data.translations[iTrans];
-        console.log("abc");
+        var trans = data[iTrans];
         var tr = $('<tr>');
-        for (var i=0; i<t.texts.length; i++) {
-            var td = $('<td>').html( t.texts[i] );
+        for (var prop in trans) {
+            var td = $('<td>').html( trans[prop] );
             tr.append(td);
         }  
         tbody.append(tr);
@@ -41,7 +40,7 @@ $('#searchbutton').click(function(ev){
 	var input = $('#searchinput').val();
     // translate source => target
     var source = "de_DE";
-    var target = "en_US";
+    var target = ["en_US", "fr_FR"];
 	var data = 
         {   text: input,
             source: source,

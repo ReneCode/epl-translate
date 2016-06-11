@@ -3,7 +3,8 @@ module.exports = function(option)  {
     if (!option) {
         option =  {
             createSampleData: false,
-            logging: true
+            logging: true,
+            production: false
         };
     }
     
@@ -11,7 +12,7 @@ module.exports = function(option)  {
     var path = require('path');
     var routes = require('./routes/routes');
  
-    var models = require('./schema/models')();
+    var models = require('./schema/models')(option);
     
     if (option.createSampleData) {
         require('./schema/createData')(models);

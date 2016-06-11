@@ -1,11 +1,15 @@
 
 var mongoose = require('mongoose');
 
-module.exports = function() {
+module.exports = function(option) {
 	// that ip adress is my docker-mongo-container
 	var localhost = '192.168.99.100';
 	localhost = 'localhost';
-	var connectUrl = 'mongodb://' + localhost + ':27017/epltranslate';	
+	var database = 'epltest';
+	if (option.production) {
+		database = 'epltranslate';
+	}
+	var connectUrl = 'mongodb://' + localhost + ':27017/' + database;	
 	mongoose.connect(connectUrl);
 	var db = mongoose.connection;
 	

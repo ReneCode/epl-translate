@@ -10,7 +10,7 @@ describe('REST translate', function(){
 	var server;
 	
 	before(function(done) {
-		server = app({logging:true}).listen(PORT, function() {
+		server = app({logging:false}).listen(PORT, function() {
 			done();
 		});
 	});
@@ -67,6 +67,21 @@ describe('REST translate', function(){
             .end( function(err, res) {
                 assert.ifError(err);
                 assert.equal(res.body.length, 0);
+                done();
+                
+            });
+        });
+
+        it ('multi-target 1:1', function(done) {
+            var para = { source: "en_US", target:["de_DE", "fr_FR"], text:"table"};
+            superagent.get(URL_TRANSLATE)
+            .query(para)
+            .end( function(err, res) {
+                assert.ifError(err);
+                assert.equal(res.body.length, 1);
+                var trans = res.body[0];
+                assert.equal(trans.de_DE, "Tisch");
+                assert.equal(trans.fr_FR, "table");
                 done();
                 
             });

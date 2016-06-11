@@ -1,5 +1,6 @@
 
 var ObjectId = require('mongoose').Types.ObjectId;
+var validLanguage = require('./validLanguage');
 
 // routing of /api/translation
 
@@ -12,28 +13,7 @@ function getIntValue(req, name, defaultVal) {
 }
 
 function makeValidTranslation(req) {
-	var validTextProperties = [
-		"cs_CZ",
-		"da_DK",
-		"de_DE",
-		"en_US",
-		"es_ES",
-		"fi_FI",
-		"fr_FR",
-		"hu_HU",
-		"it_IT",
-		"ja_JP",
-		"ko_KR",
-		"nl_NL",
-		"pl_PL",
-		"pt_BR",
-		"pt_PT",
-		"ru_RU",
-		"sk_SK",
-		"sv_SE",
-		"tr_TR",
-		"zh_CN",
-	]
+
 	var text = req.body.text;
 	if (!text) {
 		return undefined;
@@ -47,7 +27,7 @@ function makeValidTranslation(req) {
 	var bAtLeastOneValidText = false;
 	var translation = { text: {} };
 	for (var prop in text) {
-		if (validTextProperties.indexOf(prop) >= 0) {
+		if (validLanguage(prop)) {
 			translation.text[prop] = text[prop]
 			bAtLeastOneValidText = true;
 		}
