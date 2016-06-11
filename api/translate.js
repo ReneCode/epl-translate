@@ -12,6 +12,7 @@ module.exports = function(models) {
 		var text = req.query['text'];
 		var source = req.query['source'];
 		var target = req.query['target'];
+		var q = req.query['q'];
 		if (!Array.isArray(target)) {
 			target = [ target ];
 		}
@@ -21,6 +22,12 @@ module.exports = function(models) {
 		//  { text.de_DE: "searchText" }
 		var filter = {};
 		filter[ 'text.' + source] = text;
+
+		if (q) {
+			var regex = new RegExp(q, "i");
+			filter[ 'text.' + source] = regex;
+		}
+
 		Translation.find(filter).exec(function(err, data) {
 //		Translation.find({texts: {$elemMatch: {lang:source, text:text}}}).exec(function(err, data) {
 			if (err) {
@@ -30,6 +37,7 @@ module.exports = function(models) {
 				var resultTexts = [];
 				data.forEach( function(d) {
 					var oneResult = {};
+					oneResult[source] = d.text[source];
 					for (var i =0; i<target.length; i++) {
 						var language = target[i]
 						oneResult[language] = d.text[language];

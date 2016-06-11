@@ -42,7 +42,7 @@ $('#searchbutton').click(function(ev){
     var source = "de_DE";
     var target = ["en_US", "fr_FR"];
 	var data = 
-        {   text: input,
+        {   q: input,
             source: source,
             target: target };
 	$.ajax({
