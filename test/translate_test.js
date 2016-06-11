@@ -86,6 +86,22 @@ describe('REST translate', function(){
                 
             });
         });
+
+
+        it ('regEx query with parameter q', function(done) {
+            var para = { source: "de_DE", target:"en_US", q:"emme"};
+            superagent.get(URL_TRANSLATE)
+            .query(para)
+            .end( function(err, res) {
+                assert.ifError(err);
+                assert.equal(res.body.length, 1);
+                var trans = res.body[0];
+                assert.equal(trans.en_US, "terminal");
+                done();
+                
+            });
+        });
+
     });
 });
 
