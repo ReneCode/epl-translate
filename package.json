@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "mongo": "docker run --name mymongo -v $(pwd)/data:/data -p 27017:27017 -d mongo",
+    "mongo": "docker run --name mymongo -v /mongodata/db:/data/db -p 27017:27017 -d mongo",
     "start": "node app.js",
     "test": "mocha",
     "import": "node app.js | node import/import.js ../Festo_Translate_SQL_Global.xml",

@@ -2,15 +2,12 @@
 var app = require('./server');
 //var http = require('http');
 
-var production = false;
-if (process.env.NODE_ENV == 'production') {
-	production = true;
-}
+var node_env = process.env.NODE_ENV || 'development';
 
 var option = {
 	createSampleData: false,
 	logging: true,
-	production: production,
+	node_env: node_env,
 	testing: false
 };
 

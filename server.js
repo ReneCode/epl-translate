@@ -7,6 +7,9 @@ module.exports = function(option)  {
             node_env: "devlopment"
         };
     }
+
+
+    console.log("## node_env:", option.node_env);
     
     var serveStatic = require('serve-static');
     var path = require('path');

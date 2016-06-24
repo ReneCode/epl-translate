@@ -11,7 +11,7 @@ module.exports = function(option) {
 			break;
 
 		case "production":
-			mongo_server = 'localhost';
+			mongo_server = 'mongodb';
 			break;
 	}
 

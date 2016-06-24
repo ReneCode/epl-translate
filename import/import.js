@@ -66,7 +66,10 @@ function convertItem(item) {
 
 function uploadText(mlText, callback) {
 //    console.log(mlText);
-    var url = "http://localhost:3000/api/translation/";
+
+    // when using docker
+    var url = "http://192.168.99.100:3000/api/translation/";
+    url = "http://localhost:3000/api/translation/";
     superagent.post(url)
     .send(mlText)
     .end( function(err, result) {
