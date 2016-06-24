@@ -2,6 +2,7 @@ var assert = require('assert');
 
 var app = require('../server');
 var superagent = require('superagent');
+var serveroption = require('./testserveroption.json');
 
 var PORT = 3010;
 var URL_TRANSLATE = "http://localhost:" + PORT + "/api/translate";
@@ -10,7 +11,7 @@ describe('REST translate', function(){
 	var server;
 	
 	before(function(done) {
-		server = app({logging:false}).listen(PORT, function() {
+		server = app(serveroption).listen(PORT, function() {
 			done();
 		});
 	});
@@ -98,7 +99,6 @@ describe('REST translate', function(){
                 var trans = res.body[0];
                 assert.equal(trans.en_US, "terminal");
                 done();
-                
             });
         });
 

@@ -4,19 +4,21 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "mongo": "docker run --name mymongo -p 27017:27017 -d mongo",
+    "mongo": "docker run --name mymongo -v $(pwd)/data:/data -p 27017:27017 -d mongo",
     "start": "node app.js",
-    "test": "mocha"
+    "test": "mocha",
+    "import": "node app.js | node import/import.js ../Festo_Translate_SQL_Global.xml",
+    "dev": "lite-server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "async": "^2.0.0-rc.6",
-    "body-parser": "^1.15.1",
-    "express": "^4.13.4",
-    "mongoose": "^4.4.19",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.1",
     "pug": "^2.0.0-beta2",
-    "serve-static": "^1.10.3"
+    "serve-static": "^1.11.1"
   },
   "devDependencies": {
     "mocha": "^2.5.3",

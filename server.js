@@ -4,7 +4,7 @@ module.exports = function(option)  {
         option =  {
             createSampleData: false,
             logging: true,
-            production: false
+            node_env: "devlopment"
         };
     }
     

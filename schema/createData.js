@@ -5,7 +5,7 @@ function createSampleData(translation) {
 	// get sample data from json-file
 	translation.insertMany( require('./sample-translations.json'))
 	.then(function(data) {
-		console.log("created sample data");
+//		console.log("created sample data");
 	})
 	.catch(function(err) {
 		console.log("err", err);

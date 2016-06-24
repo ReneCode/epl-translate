@@ -1,0 +1,5 @@
+{
+	"node_env": "testing",
+	"logging": false,
+	"createSampleData": true
+}

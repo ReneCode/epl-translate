@@ -2,6 +2,7 @@ var assert = require('assert');
 
 var app = require('../server');
 var superagent = require('superagent');
+var serveroption = require('./testserveroption.json');
 
 var PORT = 3010;
 var URL_ROOT = 'http://localhost:' + PORT + '/api/translation/';
@@ -10,10 +11,7 @@ describe('REST translation', function(){
 	var server;
 	
 	before(function(done) {
-		server = app({
-				logging:false, 
-				createSampleData: true }
-				).listen(PORT, function() {
+		server = app(serveroption).listen(PORT, function() {
 			done();
 		});
 	});

@@ -39,7 +39,7 @@ module.exports = function(models) {
 					var oneResult = {};
 					oneResult[source] = d.text[source];
 					for (var i =0; i<target.length; i++) {
-						var language = target[i]
+						var language = target[i];
 						oneResult[language] = d.text[language];
 					}
 					resultTexts.push(oneResult);
@@ -62,4 +62,5 @@ module.exports = function(models) {
 	
 	
 	return router;
-}
+};
+
