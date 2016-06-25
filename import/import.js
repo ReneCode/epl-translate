@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 var xml2js = require('xml2js');
 var fs = require('fs');

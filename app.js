@@ -22,7 +22,7 @@ http.createServer(app).listen(3000, function() {
 
 var port = process.env.PORT || 3000;
 app(option).listen(3000, function() {
-	console.log("Server listen on port:", port);
+	console.log("## Server listen on port:", port);
 });
 
 

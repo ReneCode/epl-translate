@@ -11,23 +11,14 @@ module.exports = function(option) {
 			break;
 
 		case "production":
+			// adress of the mongo-docker server
 			mongo_server = 'mongodb';
 			break;
 	}
 
 	var connectUrl = 'mongodb://' + mongo_server + ':27017/' + database;	
 
-	console.log("mongo URL:", connectUrl);
-
-
-	var MONGO_DB;
-	var DOCKER_DB = process.env.DB_PORT;
-	if ( DOCKER_DB ) {
-	  MONGO_DB = DOCKER_DB.replace( 'tcp', 'mongodb' ) + '/myapp';
-	} else {
-	  MONGO_DB = process.env.MONGODB;
-	}
-	console.log("** mongo_db:", MONGO_DB)
+	console.log("## mongo URL:", connectUrl);
 
 	mongoose.Promise = require('bluebird');
 
