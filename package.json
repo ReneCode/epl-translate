@@ -12,7 +12,8 @@
     "start": "node app.js",
     "test": "mocha",
     "import": "node app.js | node import/import.js ../Festo_Translate_SQL_Global.xml",
-    "dev": "lite-server"
+    "dev": "lite-server",
+    "deploy": "./deploy.sh"
   },
   "author": "",
   "license": "ISC",
