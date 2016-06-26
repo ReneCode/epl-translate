@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# prepare for docker 
+eval $(docker-machine env)
+
 echo "## build docker container"
 docker-compose build
 
