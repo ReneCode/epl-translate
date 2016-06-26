@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "repository" :
+    { "type" : "git",
+      "url" : "https://github.com/ReneCode/epl-translate"
+    },
   "scripts": {
     "mongo": "docker run --name mymongo -v /mongodata/db:/data/db -p 27017:27017 -d mongo",
     "start": "node app.js",
