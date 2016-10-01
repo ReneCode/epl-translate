@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "repository" :
-    { "type" : "git",
-      "url" : "https://github.com/ReneCode/epl-translate"
-    },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ReneCode/epl-translate"
+  },
   "scripts": {
     "mongo": "docker run --name mymongo -v /mongodata/db:/data/db -p 27017:27017 -d mongo",
     "start": "node app.js",
     "test": "mocha",
     "import": "node app.js | node import/import.js ../Festo_Translate_SQL_Global.xml",
-    "dev": "lite-server"
+    "dev": "lite-server",
+    "e2e": "protractor protactor.conf.js",
+    "update-webdriver": "webdriver-manager update"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "mocha": "^2.5.3",
+    "protractor": "^4.0.9",
     "superagent": "^1.8.3",
     "xml2js": "^0.4.16"
   }
